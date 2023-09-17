@@ -1,0 +1,66 @@
+<!-- TODO 
+    praticamente esce un menù a tendina che richiede un hotel, 
+    dopo la selezione vengono mostrate a schermo tutte le stanze dell'hotel selezionato -->
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+    <head th:replace="fragments/base.html :: adminHeaderfiles(title='index')">
+    </head>
+
+    <body>
+        <!-- Navigation-->
+        <nav th:replace="fragments/base.html :: navbar"></nav>
+
+
+        <!-- Masthead-->
+        <header class="masthead">
+            <div class="container">
+                <div class="masthead-subheading">SiwBooking</div>
+
+                <a class="btn btn-primary btn-xl text-uppercase" href="#stanzaServices">Visualizza
+                    le stanze</a>
+            </div>
+        </header>
+        <!-- Services-->
+        <section class="page-section" id="stanzaServices">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="section-heading text-uppercase">Le nostre Stanze</h2>
+
+                    <div class="mx-auto" style="width: 300px;">
+
+                        <div class="text-uppercase" th:each="hotel : ${hotels}">
+                            <h3 th:text="${hotel.nome}">hotel</h3>
+                            <div class="list-group" th:if="${!hotel.stanze.isEmpty()}">
+
+
+                                <a class="btn btn-outline-warning" th:each="stanza : ${stanze}"
+                                    th:if="${stanza.getHotel() eq hotel} " href="stanza.html"
+                                    th:href="@{'/stanza/' + ${stanza.id}}" th:text="${stanza.name}">stanza</a>
+                            </div>
+                            <div th:unless="${!hotel.stanze.isEmpty()}" class="text-lowercase">Non ci sono stanze per questo hotel</div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+
+        <section th:replace="fragments/base.html :: contact">
+        </section>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+        <!-- * *                               SB Forms JS                               * *-->
+        <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+    </body>
+
+</html>

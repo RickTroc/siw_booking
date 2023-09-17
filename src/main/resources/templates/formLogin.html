@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+	<head th:replace="fragments/base.html :: headerfiles(title='index')">
+	</head>
+	<!-- TODO: -->
+
+	<body style="background-color: transparent;" id="login">
+
+		<div class="container px-4 py-5 px-md-5 text-center text-lg-start my-5">
+			<div class="row gx-lg-5 align-items-center mb-5">
+				<div class="col-lg-6 mb-5 mb-lg-0" style="z-index: 10">
+					<h1 class="my-5 display-5 fw-bold ls-tight" style="color: #ffc800">
+						La maglior offerta <br />
+						<span style="color: #ffc800"> per il tuo relax</span>
+					</h1>
+				</div>
+
+				<div class="col-lg-6 mb-5 mb-lg-0 position-relative">
+					<div id="radius-shape-1" class="position-absolute rounded-circle shadow-5-strong"></div>
+					<div id="radius-shape-2" class="position-absolute shadow-5-strong"></div>
+
+					<div class="card bg-glass" style="background-color: #B0C4DE">
+						<div class="card-body px-4 py-5 px-md-5">
+							<form th:action="@{/login}" method="POST">
+
+
+								<!-- Email input -->
+								<div class="form-outline mb-4">
+									<input name="username" type="text" class="form-control" id="username"
+										placeholder="username">
+									<label class="form-label" for="username">Username</label>
+								</div>
+
+								<!-- Password input -->
+								<div class="form-outline mb-4">
+									<input name="password" type="password" class="form-control" id="password"
+										placeholder="password">
+									<label class="form-label" for="form3Example4">Password</label>
+								</div>
+
+
+								<!-- Submit button -->
+								<button type="submit" class="btn btn-primary btn-block mb-4">
+									Sign up
+								</button>
+
+								<!-- Register buttons -->
+								<div>Non hai ancora un account?<a th:href="@{/register}">Registrati</a></div>
+
+
+
+
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+
+	</body>
+
+</html>

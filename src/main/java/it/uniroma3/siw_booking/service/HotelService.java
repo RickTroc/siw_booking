@@ -21,6 +21,7 @@ public class HotelService {
         this.hotelRepository.save(hotel);
     }
 
+    @Transactional
     public Hotel findById(Long id){
         return this.hotelRepository.findById(id).get();
     }
@@ -38,8 +39,8 @@ public class HotelService {
 
 
 
-
-    public boolean existByName(Hotel hotel) {
+    @Transactional
+    public boolean exist(Hotel hotel) {
         return this.hotelRepository.existsByNomeAndIndirizzo(hotel.getNome(), hotel.getIndirizzo());
     }
     

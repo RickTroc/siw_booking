@@ -39,9 +39,10 @@ public class AuthConfiguration{
     protected SecurityFilterChain configure(final HttpSecurity httpSecurity) throws Exception{
         httpSecurity
                 // authorization paragraph: qui definiamo chi puÃ² accedere a cosa
+                .csrf().and().cors().disable()
                 .authorizeRequests()
                 // chiunque (autenticato o no) può accedere alle pagine index, login, register, ai css e alle immagini
-                .requestMatchers(HttpMethod.GET, "/**",  
+                .requestMatchers(HttpMethod.GET, "/**", "/hotel/**", "/stanza/**", "/pacchetto/**",
                         "/login", "/registerUser/**", "/register/**",  "/css/**", "/images/**").permitAll()
                 // chiunque (autenticato o no) può mandare richieste POST al punto di accesso per login e register 
                 .requestMatchers(HttpMethod.POST, "/login", "/register").permitAll()
@@ -58,7 +59,7 @@ public class AuthConfiguration{
                 // NOTA: Spring gestisce il post di login automaticamente
                 .loginPage("/login")
                 // se il login ha successo, si viene rediretti al path /default
-                .defaultSuccessUrl("/default")
+                .defaultSuccessUrl("/")
             
                 
                 // logout paragraph: qui definiamo il logout

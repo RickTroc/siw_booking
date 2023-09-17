@@ -36,7 +36,7 @@ public class PacchettoService {
     }
 
     public boolean alredyExist(Pacchetto pacchetto){
-        return this.pacchettoRepository.existsByNomeAndDescrizione(pacchetto.getNome(), pacchetto.getDescrizione());
+        return this.pacchettoRepository.existsByNomeAndStanza(pacchetto.getNome(), pacchetto.getStanza());
     }
 
 }

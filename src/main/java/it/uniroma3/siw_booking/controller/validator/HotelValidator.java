@@ -1,17 +1,21 @@
 package it.uniroma3.siw_booking.controller.validator;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
-import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
 import it.uniroma3.siw_booking.model.Hotel;
-import it.uniroma3.siw_booking.service.HotelService;
+import it.uniroma3.siw_booking.repository.HotelRepository;
 
+import java.lang.Object;
+
+@Component
 public class HotelValidator implements Validator{
 
+    
     @Autowired
-    private HotelService hotelService;
+    private HotelRepository hotelRepository;
 
     @Override
     public boolean supports(Class<?> clazz) {
@@ -20,10 +24,16 @@ public class HotelValidator implements Validator{
     }
 
     @Override
-    public void validate(Object target, Errors errors) {
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "nome", "required");
-		if (this.hotelService.existByName((Hotel)target))
-			errors.reject("hotel.duplicato");
+    public void validate(Object o, Errors errors) {
+       
+            Hotel hotel = (Hotel) o;
+            
+            
+            if (hotel.getNome()!= null &&
+                hotel.getIndirizzo() != null &&
+                this.hotelRepository.existsByNomeAndIndirizzo(hotel.getNome(), hotel.getIndirizzo()))
+                errors.reject("hotel.duplicato");
+        
     }
     
 }

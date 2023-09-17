@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+    <head th:replace="fragments/base.html :: adminHeaderfiles(title='index')">
+    </head>
+
+    <body>
+        <!-- Navigation-->
+        <nav th:replace="fragments/base.html :: navbar"></nav>
+
+        <!-- Masthead-->
+        <header class="masthead">
+            <div class="container">
+                <div class="masthead-subheading">SiwBooking</div>
+
+                <a class="btn btn-primary btn-xl text-uppercase" href="#services">Visualizza
+                    i dettagli della Stanza</a>
+            </div>
+        </header>
+        <!-- Services-->
+        <section class="page-section" id="stanzaServices">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="section-heading text-uppercase">
+                        <span th:text="'Camera ' + ${stanza.name}">nome</span>
+                    </h2>
+                    <div th:if="stanza" th:object="${stanza}">
+                        <h4 th:text="#{msgStanza.numeroLettiSingoli}">1:</h4>
+                        <p th:utext="*{lettiSingoli}">2</p>
+                        <h4 th:text="#{msgStanza.numeroLettiMatrimoniali }">3:</h4>
+                        <p th:utext="*{lettiMatrimoniali }">4</p>
+
+
+
+
+
+                        <ul style="padding-left: 0rem;">
+                            <li th:each="pacchetto : ${pacchetti}">
+                                <p thi:if="${pacchetti.isEmpty()}"> non ci sono offerte per questa stanza</p>
+                                <h4>I pacchetti proposti:</h4> <a class="btn btn-outline-warning" href="pacchetto.html"
+                                    th:href="@{'/pacchetto' + '/' + ${pacchetto.id}}"
+                                    th:text="${pacchetto.nome}">pacchetto</a>
+                            </li>
+                        </ul>
+
+
+                        <div th:unless="${stanza}">Non esiste</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section th:replace="fragments/base.html :: contact">
+        </section>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+        <!-- * *                               SB Forms JS                               * *-->
+        <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+    </body>
+
+</html>

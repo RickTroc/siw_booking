@@ -1,11 +1,114 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>TODO</h1>
-</body>
+<html xmlns:th="http://www.thymeleaf.org">
+
+	<head th:replace="fragments/base.html :: headerfiles(title='index')">
+	</head>
+
+
+	<body id="page-top">
+		<!-- Navigation-->
+		<nav th:replace="fragments/base.html :: navbar"></nav>
+
+		<!-- Masthead-->
+		<header class="masthead">
+			<div class="container">
+				<div class="masthead-subheading">Benvenuto in SiwBooking</div>
+
+				<a class="btn btn-primary btn-xl text-uppercase" href="#services">Dimmi
+					di piu'</a>
+			</div>
+		</header>
+		<!-- Services-->
+		<section class="page-section" id="services">
+			<div class="container">
+				<div class="text-center">
+					<h2 class="section-heading text-uppercase">Services</h2>
+					<h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+				</div>
+				<div class="row text-center">
+					<div class="col-md-4">
+						<span class="fa-stack fa-4x">
+							<i class="fas fa-circle fa-stack-2x text-primary"></i>
+							<i class="fas fa-hotel fa-stack-1x fa-inverse"></i>
+						</span>
+						<h4 class="my-3">Hotel</h4>
+						<p class="text-muted">Benvenuti al nostro lussuoso hotel, un'oasi di comfort e servizi
+							eccezionali. Con una posizione centrale, offriamo una vasta gamma di camere eleganti e
+							strutture di prima classe, perfette per viaggi d'affari e vacanze indimenticabili. Scopri il
+							nostro impegno per l'eccellenza e lasciati coccolare dalla nostra calorosa ospitalità..</p>
+					</div>
+					<div class="col-md-4">
+						<span class="fa-stack fa-4x">
+							<i class="fas fa-circle fa-stack-2x text-primary"></i>
+							<i class="fas fa-bed fa-stack-1x fa-inverse"></i>
+						</span>
+						<h4 class="my-3">Stanze</h4>
+						<p class="text-muted">Le nostre stanze sono progettate per offrirti un soggiorno
+							indimenticabile. Confortevoli letti, arredi raffinati e una vista mozzafiato, ti sentirai
+							subito a casa. Scegli tra una varietà di opzioni per soddisfare le tue esigenze e goditi un
+							ambiente accogliente e rilassante durante il tuo soggiorno.</p>
+					</div>
+					<div class="col-md-4">
+						<span class="fa-stack fa-4x">
+							<i class="fas fa-circle fa-stack-2x text-primary"></i>
+							<i class="fas fa-gift fa-stack-1x fa-inverse"></i>
+						</span>
+						<h4 class="my-3">Pacchetti</h4>
+						<p class="text-muted">Esplora i nostri pacchetti speciali e regalati un'esperienza
+							straordinaria. Dai pacchetti romantici per coppie in cerca di relax alle offerte per
+							famiglie alla ricerca di avventure, abbiamo qualcosa per tutti. I nostri pacchetti includono
+							alloggio di lusso, esperienze culinarie indimenticabili e molto altro. Scegli il pacchetto
+							perfetto per rendere il tuo soggiorno ancora più memorabile.</p>
+					</div>
+				</div>
+			</div>
+		</section>
+	
+		<!-- Accesso -->
+		<section class="page-section bg-light" th:unless="${userDetails}" id="credentials">
+			<div class="container">
+				<div class="text-center">
+					<h2 class="section-heading text-uppercase">Login</h2>
+
+				</div>
+				<div class="row">
+					<div class="col-lg-6 col-sm-6 mb-4">
+						
+						<div>
+							<a class="w-100 btn btn-outline-warning" th:href="@{/login}">
+								<img style="width: 50px; margin-right: 10px" src="/images/login.png">Login
+							</a>
+						</div>
+					</div>
+					<div class="col-lg-6 col-sm-6 mb-4">
+					
+						<div>
+							<a class="w-100 btn btn-outline-warning" th:href="@{/register}">
+								<img style="width: 50px; margin-right: 10px" src="/images/registrazione.png">Registrati
+							</a>
+						</div>
+					</div>
+
+
+
+				</div>
+			</div>
+		</section>
+
+
+		<!-- Contact-->
+		<section th:replace="fragments/base.html :: contact">
+			
+		</section>
+		<!-- Bootstrap core JS-->
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+		<!-- Core theme JS-->
+		<script src="js/scripts.js"></script>
+		<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+		<!-- * *                               SB Forms JS                               * *-->
+		<!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+		<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+		<script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+	</body>
+
 </html>

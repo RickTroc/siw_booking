@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
+import it.uniroma3.siw_booking.model.Hotel;
 import it.uniroma3.siw_booking.model.Stanza;
 import it.uniroma3.siw_booking.repository.StanzaRepository;
 import jakarta.transaction.Transactional;
@@ -15,6 +15,8 @@ public class StanzaService {
     
     @Autowired
     private StanzaRepository stanzaRepository;
+    @Autowired
+    private HotelService hotelService;
 
 
     @Transactional
@@ -38,8 +40,19 @@ public class StanzaService {
     }
 
     public boolean alreadyExists(Stanza stanza){
-        return this.stanzaRepository.existsByNomeAndHotel(stanza.getName(),stanza.getHotel());
+        return this.stanzaRepository.existsByNameAndHotel(stanza.getName(),stanza.getHotel());
     }
+
+
+    public List<Stanza> findStanzeByHotelId(Long hotelId){
+        Hotel hotel = this.hotelService.findById(hotelId);
+        return hotel.getStanze();
+
+    }
+
+    
+
+    
 }
 
 

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+    <head th:replace="fragments/base.html :: adminHeaderfiles(title='index')">
+    </head>
+
+    <body>
+        <!-- Navigation-->
+        <nav th:replace="fragments/base.html :: navbar"></nav>
+
+        <!-- Masthead-->
+        <header class="masthead">
+            <div class="container">
+                <div class="masthead-subheading">SiwBooking</div>
+
+                <a class="btn btn-primary btn-xl text-uppercase" href="#pacchettoService" >Visualizza i pacchetti</a>
+            </div>
+        </header>
+        <!-- Services-->
+        <section class="page-section" id="pacchettoService">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="section-heading text-uppercase">I nostri Pacchetti</h2>
+                    <p th:if="${pacchetti.isEmpty()}">Non ci sono pacchetti nel sistema</p>
+
+                    <div class="mx-auto" style="width: 300px;">
+                        <ul class="list-group">
+                            <li class="btn btn-outline-warning" th:each="pacchetto : ${pacchetti}">
+                                <a href="pacchetto.html" th:href="@{'/deletePacchetto' + '/' + ${pacchetto.id}}">
+                                    <h4 th:text="${pacchetto.nome}"></h4>
+                                    <p th:text=" 'Stanza ' + ${pacchetto.stanza.name} + ' - ' + ${pacchetto.stanza.hotel.nome}"></p>
+
+                                </a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section th:replace="fragments/base.html :: contact">
+        </section>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+        <!-- * *                               SB Forms JS                               * *-->
+        <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+    </body>
+
+</html>

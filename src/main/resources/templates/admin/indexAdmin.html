@@ -1,0 +1,124 @@
+<!--TODO: Refactor -->
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/base.html :: headerfiles(title='index')">
+</head>
+
+<body id="page-top">
+	<!-- Navigation-->
+	<nav th:replace="fragments/base :: navbar">
+	</nav>
+	<!-- Masthead-->
+	<header class="masthead">
+		<div class="container">
+			<div class="masthead-subheading">Benvenuto in SiwBooking</div>
+
+			<a class="btn btn-primary btn-xl text-uppercase" href="#services">Esegui
+				le operazioni da utente</a>
+		</div>
+	</header>
+	<!-- Services-->
+	<section class="page-section" id="services">
+		<div class="container ">
+			<div class="text-center">
+				<h2 class="section-heading text-uppercase " style="padding-left: 1.5rem;">Servizi</h2>
+
+			</div>
+			<div class="row text-center">
+				<div class="col-md-4">
+					<span class="fa-stack fa-2x"> 
+						<i class="fas fa-circle fa-stack-2x text-primary"></i> 
+                        <i class="fas fa-hotel fa-stack-1x fa-inverse"></i>
+					</span>   <br>
+                    <a class=" btn btn-outline-warning  my-2" th:href="@{/hotels}" >
+						Visualizza gli Hotel </a>
+					<div class="container">
+						<div class="row text-center">
+							<p class="text-muted">
+							<div class="col-md-6">
+
+								<a class=" btn btn-outline-warning" th:href="@{/admin/formNewHotel}">Inserisci
+									hotel</a>
+
+							</div>
+							<div class="col-md-6">
+								<a class=" btn btn-outline-warning"
+									th:href="@{/admin/deleteHotel}">Elimina hotel</a>
+							</div>
+
+
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4 ">
+					<span class="fa-stack fa-2x"> <i
+						class="fas fa-circle fa-stack-2x text-primary"></i> <i
+						class="fas fa-bed fa-stack-1x fa-inverse"></i>
+					</span> <br>
+					 <a class=" btn btn-outline-warning my-2" th:href="@{/stanze}">
+						Visualizza le Stanze </a>
+					<div class="container">
+						<div class="row text-center">
+							<p class="text-muted">
+							<div class="col-md-6">
+								<a class=" btn btn-outline-warning" th:href="@{/admin/formNewStanza}">Inserisci
+									stanza</a>
+							</div>
+							<div class="col-md-6">
+								<a class=" btn btn-outline-warning"
+									th:href="@{/admin/deleteStanza}">Elimina stanza</a>
+							</div>
+
+
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<span class="fa-stack fa-2x"> <i
+						class="fas fa-circle fa-stack-2x text-primary"></i> <i
+						class="fas fa-gift fa-stack-1x fa-inverse"></i>
+					</span>  <br> <a class=" btn btn-outline-warning my-2" th:href="@{/pacchetti}">
+						Visualizza i pacchetti </a>
+					<div class="container">
+						<div class="row text-center">
+							<p class="text-muted">
+							<div class="col-md-6">
+								<a class=" btn btn-outline-warning"
+									th:href="@{/admin/formNewPacchetto}">Inserisci pacchetto</a>
+							</div>
+							<div class="col-md-6">
+
+								<a class=" btn btn-outline-warning"
+									th:href="@{/admin/deletePacchetto}">Elimina pacchetto</a>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+	<!-- Contact-->
+	<section class="page-section" id="contact" style="color: white;">
+		<div class="container">
+			<div class="text-center">
+				<h2 class="section-heading text-uppercase">Contatti</h2>
+				<img style="width: 20px;" src="/images/cel.png"> Tel:
+				065512341, <img style="width: 20px;" src="/images/mail.png">Email:<a
+					href="mailto: SiwBooking@email.com? subject=subject text">
+					SiwBooking@email.com</a>
+			</div>
+
+		</div>
+	</section>
+	<!-- Bootstrap core JS-->
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+	<!-- Core theme JS-->
+
+	<!--  <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>-->
+</body>
+</html>
