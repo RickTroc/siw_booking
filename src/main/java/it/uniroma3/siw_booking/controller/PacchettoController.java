@@ -80,8 +80,9 @@ public class PacchettoController {
     }
 
     @GetMapping(value = "/admin/deletePacchetto/{id}")
-    public String deletePacchetto(@PathVariable("id") Long id) {
+    public String deletePacchetto(@PathVariable("id") Long id, Model model) {
         this.pacchettoService.deletePacchetto(id);
+        model.addAttribute("pacchetti", this.pacchettoService.findAllPacchetto());
         return "admin/deletePacchetto.html";
     }
 

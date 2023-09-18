@@ -89,8 +89,9 @@ public class StanzaController {
     }
 
     @GetMapping(value = "/admin/deleteStanza/{id}")
-    public String deleteStanza(@PathVariable("id") Long id) {
-        this.stanzaService.deletestanza(id);;
+    public String deleteStanza(@PathVariable("id") Long id, Model model) {
+        this.stanzaService.deletestanza(id);
+        model.addAttribute("stanze", this.stanzaService.findAllStanza());
         return "admin/deleteStanza.html";
     }
 

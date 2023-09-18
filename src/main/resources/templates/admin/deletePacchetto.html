@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
-    <head th:replace="fragments/base.html :: adminHeaderfiles(title='index')">
+    <head th:replace="fragments/base.html :: adminHeaderfiles(title='Elimina Pacchetto')">
     </head>
 
     <body>
@@ -16,37 +16,31 @@
                 <a class="btn btn-primary btn-xl text-uppercase" href="#services">Elimina il pacchetto!</a>
             </div>
         </header>
+
         <!-- Services-->
-        <section class="page-section" id="services">
+        <section class="page-section" id="pacchettoService">
             <div class="container">
                 <div class="text-center">
+                    <h2 class="section-heading text-uppercase">I nostri Pacchetti</h2>
+                    <p th:if="${pacchetti.isEmpty()}">Non ci sono pacchetti nel sistema</p>
 
+                    <div class="mx-auto" style="width: 300px;">
+                        <ul class="list-group">
+                            <li class="btn btn-outline-warning" th:each="pacchetto : ${pacchetti}">
+                                <a th:href="@{'/admin/deletePacchetto/' + ${pacchetto.id}}">
+                                    <h4 th:text="${pacchetto.nome}"></h4>
+                                    <p
+                                        th:text=" 'Stanza ' + ${pacchetto.stanza.name} + ' - ' + ${pacchetto.stanza.hotel.nome}">
+                                    </p>
 
-                    <form th:action="@{/admin/deletePacchetto}" method="POST">
-                        <div class="row">
-                            <div class="col"></div>
-                            <div class="col-lg-4 col-sm-8 ">
-                                <h2 class="section-heading text-uppercase">
-                                    Elimina Pacchetto
-                                </h2>
-                                <ul>
-                                    <li th:each="pacchetto : ${pacchettoAll}">
-                                        <div>
-                                            <input type="radio" name="pacchetto" th:value="${pacchetto.id}" />
-                                            <label th:text="${pacchetto.nome}"></label>
-                                        </div>
-                                    </li>
-                                </ul>
-                                <div>
-                                    <button class="btn btn-outline-warning" type="submit">Elimina</button>
-                                </div>
-                            </div>
-                            <div class="col"></div>
-                        </div>
-                    </form>
+                                </a>
+                            </li>
+
+                        </ul>
+                    </div>
                 </div>
-            </div>
 
+            </div>
         </section>
 
 

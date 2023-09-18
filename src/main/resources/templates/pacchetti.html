@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
-    <head th:replace="fragments/base.html :: adminHeaderfiles(title='index')">
+    <head th:replace="fragments/base.html :: adminHeaderfiles(title='I nostri pacchetti')">
     </head>
 
     <body>
@@ -26,7 +26,7 @@
                     <div class="mx-auto" style="width: 300px;">
                         <ul class="list-group">
                             <li class="btn btn-outline-warning" th:each="pacchetto : ${pacchetti}">
-                                <a href="pacchetto.html" th:href="@{'/deletePacchetto' + '/' + ${pacchetto.id}}">
+                                <a href="pacchetto.html" th:href="@{'/pacchetto' + '/' + ${pacchetto.id}}">
                                     <h4 th:text="${pacchetto.nome}"></h4>
                                     <p th:text=" 'Stanza ' + ${pacchetto.stanza.name} + ' - ' + ${pacchetto.stanza.hotel.nome}"></p>
 

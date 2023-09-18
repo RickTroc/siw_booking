@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
-    <head th:replace="fragments/base.html :: adminHeaderfiles(title='index')">
+    <head th:replace="fragments/base.html :: adminHeaderfiles(title='Elimina Stanza')">
     </head>
 
     <body>
@@ -31,8 +31,8 @@
 
 
                                 <a class="btn btn-outline-warning" th:each="stanza : ${stanze}"
-                                    th:if="${stanza.getHotel() eq hotel} " href="stanza.html"
-                                    th:href="@{'/deleteStanza/' + ${stanza.id}}" th:text="${stanza.name}">stanza</a>
+                                    th:if="${stanza.getHotel() eq hotel} "
+                                    th:href="@{'/admin/deleteStanza/' + ${stanza.id}}" th:text="${stanza.name}">stanza</a>
                             </div>
                             <div th:unless="${!hotel.stanze.isEmpty()}" class="text-lowercase">Non ci sono stanze per
                                 questo hotel</div>
