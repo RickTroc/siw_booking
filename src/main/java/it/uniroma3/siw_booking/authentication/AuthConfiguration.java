@@ -67,7 +67,7 @@ public class AuthConfiguration{
                 // il logout Ã¨ attivato con una richiesta GET a "/logout"
                 .logoutUrl("/logout")
                 // in caso di successo, si viene reindirizzati alla /index page
-                .logoutSuccessUrl("/login")        
+                .logoutSuccessUrl("/")        
                 .invalidateHttpSession(true)
                 .clearAuthentication(true).permitAll().logoutRequestMatcher(new AntPathRequestMatcher("/logout"));
                 return httpSecurity.build();

@@ -29,7 +29,7 @@
 
                         <ul style="padding-left: 0rem;">
                             <h4>Stanze:</h4>
-                            <p th:if="*{stanze.isEmpty()}">Non sono state aggiunte stanze per questo hotel</p>
+                            <p th:if="${hotel.stanze.isEmpty()}">Non sono state aggiunte stanze per questo hotel</p>
                             <li th:each="stanza : ${stanze}">
                                 <a th:href="@{'/stanza' + '/' + ${stanza.id}}"
                                     th:text="${stanza.name}" style="font-size: 20px;">stanza</a>
